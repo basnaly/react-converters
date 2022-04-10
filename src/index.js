@@ -1,12 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import React from "react";
+import { createRoot } from "react-dom/client";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
 import "bootstrap/dist/css/bootstrap.css";
-import AppConverter from './Converter/AppConverter'
+import AppConverter from "./Converter/AppConverter";
 import ReducerConverter from "./Converter/ReducerConverter";
-import reportWebVitals from './reportWebVitals';
 
 // const logger = createLogger({
 // });
@@ -16,11 +15,12 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
-    <Provider store={ store }>
-        <AppConverter />
+    <Provider store={store}>
+      <AppConverter />
     </Provider>
-  </React.StrictMode>,
-    document.getElementById('root')
+  </React.StrictMode>
 );
